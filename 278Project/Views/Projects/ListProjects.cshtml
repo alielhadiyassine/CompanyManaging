@@ -1,0 +1,41 @@
+﻿@model ProjectModel
+@{
+    ViewData["Title"] = "ListProjects";
+}
+
+<div class="container">
+    @if(ViewBag.Projects != null && ViewBag.Projects.Count >=1)
+    {
+        <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach(var proj in ViewBag.Projects)
+                {
+                    <tr>
+                      <th scope="row">@proj.Id</th>
+                      <td>@proj.Name</td>
+                      <td>@proj.Desription</td>
+                      <td>@proj.Status</td>
+                      <td>
+                          @if(proj.Status == "Assigned"){
+                          <form asp-action="FinishProject" asp-controller="Projects" method="post">
+                                <input type="hidden" asp-for="Id" value="@proj.Id">
+                                <button type="submit" class="btn-primary btn-primary">Finish</button>
+                            </form> 
+                          }
+                      </td>
+                    </tr>
+                }
+
+              </tbody>
+            </table>
+    }
+</div>

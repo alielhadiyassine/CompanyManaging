@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Matching";
+}
+@model MatchingModel
+
+<button type="button" class="btn btn-success" onclick="window.location.href='/Home/SignOutU'">Sign Out</button>
+<h1>Enter Project and Employee Ids to Assign</h1>
+
+<form action="/Matching/Index" method="post">
+
+  <div class="form-group">
+    <label for="ProjectId">Project Id</label>
+    <input style="width:15%" type="number" class="form-control" id="ProjectId" asp-for="projId" value="">
+  </div>
+
+  <div class="form-group">
+    <label for="EmployeeId">Employee Id</label>
+    <input style="width:15%" type="number" class="form-control" id="EmployeeId" asp-for="empId" value ="">
+  </div>
+
+  
+  <button type="submit" class="btn btn-primary">Match</button>
+</form>
+

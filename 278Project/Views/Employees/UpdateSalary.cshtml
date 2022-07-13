@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "UpdateSalary";
+}
+@model EmployeeModel
+
+<form action="/Employees/UpdateSalary" method="post">
+
+  <div class="form-group">
+    <label for="Id">Employee Id</label>
+    <input style="width:15%" type="number" class="form-control" id="Id" asp-for="Id" value="">
+  </div>
+
+  <div class="form-group">
+    <label for="Salary">Salary</label>
+    <input style="width:15%" type="number" class="form-control" id="Salary" asp-for="Salary" value ="">
+  </div>
+
+  
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>

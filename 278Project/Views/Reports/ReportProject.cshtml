@@ -1,0 +1,41 @@
+﻿@model ProjectModel
+@{
+    ViewData["Title"] = "ReportProject";
+}
+
+<div class="container">
+    <form action="/Reports/ReportProject" method="post">
+        <div class="form-group">
+            <label for="Id">Id</label>
+            <input style="width:10%" type="number" class="form-control" id="Id" asp-for="Id">
+        </div>
+        <button type="submit" class="btn btn-primary">Report</button>
+    </form>
+    <table style="width:50%" class="table table-dark">
+        @if (ViewBag.Project != null)
+        {
+
+            var proj = ViewBag.Project;
+            {
+                <thead>
+                    <tr><th scope="col">Id</th><td>@proj.Id</td></tr>
+                </thead>
+                <tbody>
+                    <tr><th>Name</th><td>@proj.Name</td></tr>
+
+                    <tr><th>Description</th><td>@proj.Desription</td></tr>
+
+                    <tr><th>Status</th><td>@proj.Status</td></tr>
+                    <tr><th>Assigned Employees</th><td></td></tr>
+                    @if(ViewBag.Employees != null && ViewBag.Employees.Count > 0)
+                    {
+                        foreach(var emp in ViewBag.Employees)
+                        {
+                            <tr><th></th><td>@emp.Name</td></tr>
+                        }
+                    }
+                </tbody>
+            }
+        }
+            </table>
+</div>

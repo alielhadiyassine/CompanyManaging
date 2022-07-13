@@ -1,0 +1,41 @@
+﻿@model EmployeeModel
+@{
+    ViewData["Title"] = "ListEmployees";
+}
+
+<div class="container">
+    @if(ViewBag.Employees != null && ViewBag.Employees.Count >=1)
+    {
+        <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Project ID</th>
+                  <th scope="col">Expertise</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach(var emp in ViewBag.Employees)
+                {
+                    <tr>
+                      <th scope="row">@emp.Id</th>
+                      <td>@emp.Name</td>
+                      <td>@emp.ProjectId</td>
+                      <td>@emp.Expertise</td>
+                      <td>@emp.Status</td>
+                      <td>
+                          <form asp-action="DeleteEmployee" asp-controller="Employees" method="post">
+                                <input type="hidden" asp-for="Id" value="@emp.Id">
+                                <button type="submit" class="btn-primary btn-primary">Delete</button>
+                            </form> 
+                      </td>
+                    </tr>
+                }
+
+              </tbody>
+            </table>
+    }
+</div>

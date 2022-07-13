@@ -1,0 +1,39 @@
+﻿@model EmployeeModel
+@{
+    ViewData["Title"] = "ReportEmployee";
+}
+
+<div class="container">
+    <form action="/Reports/ReportEmployee" method="post">
+        <div class="form-group">
+            <label for="Id">Id</label>
+            <input style="width:10%" type="number" class="form-control" id="Id" asp-for="Id">
+        </div>
+        <button type="submit" class="btn btn-primary">Report</button>
+    </form>
+    <table style="width:50%" class="table table-dark">
+        @if (ViewBag.Employees != null)
+        {
+
+            var emp = ViewBag.Employees;
+            {
+                <thead>
+                    <tr><th scope="col">Id</th><td>@emp.Id</td></tr>
+                </thead>
+                <tbody>
+                    <tr><th>Name</th><td>@emp.Name</td></tr>
+
+                    <tr><th>Project ID</th><td>@emp.ProjectId</td></tr>
+
+                    <tr><th>Expertise</th><td>@emp.Expertise</td></tr>
+
+                    <tr><th>Status</th><td>@emp.Status</td></tr>
+
+                    <tr><th>Salary</th><td>@emp.Salary $</td></tr>
+
+                    <tr><th>Starting Year</th><td>@emp.StartYear</td></tr>
+                </tbody>
+            }
+        }
+            </table>
+</div>
